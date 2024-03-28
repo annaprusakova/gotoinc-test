@@ -1,3 +1,8 @@
+'use client';
+
+import { useParams } from 'next/navigation';
+
 export default function UserRequestPage() {
-    return (<div>user request page</div>)
+	const { id } = useParams();
+	return <div>user request page: {id}</div>;
 }

@@ -1,0 +1,11 @@
+.label {
+	@apply mb-2 block text-sm font-medium text-gray-900;
+}
+
+.input {
+	@apply block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500;
+}
+
+.error {
+	@apply mt-2 text-sm text-red-600;
+}

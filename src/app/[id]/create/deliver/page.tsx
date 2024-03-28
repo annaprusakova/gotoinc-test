@@ -1,3 +1,3 @@
 export default function UserDeliverPage() {
-    return (<div>user deliver page</div>)
+	return <div>user deliver page</div>;
 }
