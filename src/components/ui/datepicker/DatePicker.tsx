@@ -1,5 +1,6 @@
 'use client';
 
+import moment from 'moment';
 import { useState } from 'react';
 import Datepicker from 'tailwind-datepicker-react';
 
@@ -36,16 +37,22 @@ const options = {
 	inputPlaceholderProp: 'Select Date',
 };
 
-export function DatePicker() {
+type DatePickerProps = {
+	label: string;
+	onChange: (value: number) => void;
+};
+
+export function DatePicker({ label, onChange }: DatePickerProps) {
 	const [show, setShow] = useState<boolean>(false);
 	const handleChange = (selectedDate: Date) => {
-		console.log(selectedDate);
+		onChange(moment(selectedDate).unix());
 	};
 	const handleClose = (state: boolean) => {
 		setShow(state);
 	};
 	return (
 		<div className={'mb-6'}>
+			<label className={'mb-2 block text-sm font-medium'}>{label}</label>
 			<Datepicker
 				options={options}
 				onChange={handleChange}

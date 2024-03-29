@@ -13,15 +13,13 @@ export default function NavBarItem({ link, itemName }: NavBarItemProps) {
 	const { id } = useParams();
 	const route = itemName === 'All requests' ? link : `/${id}${link}`;
 	return (
-		<li>
-			<a
-				href={route}
-				className={cn(styles.item, {
-					[styles.active]: pathname.includes(route),
-				})}
-			>
-				<span className='ms-3'>{itemName}</span>
-			</a>
-		</li>
+		<a
+			href={route}
+			className={cn(styles.item, {
+				[styles.active]: pathname.includes(route),
+			})}
+		>
+			<span className='ms-3'>{itemName}</span>
+		</a>
 	);
 }

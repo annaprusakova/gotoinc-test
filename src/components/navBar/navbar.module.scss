@@ -1,12 +1,20 @@
-.aside {
-	@apply fixed left-0 top-0 z-40 h-screen w-64 -translate-x-full transition-transform sm:translate-x-0;
+.navBarWrapper {
+	@apply hidden border-r bg-gray-100/40 lg:block;
 }
 
-.itemsContainer {
-	@apply h-full overflow-y-auto bg-gray-50 px-3 py-4;
+.navBar {
+	@apply flex flex-col gap-2;
 }
 
-.ul {
+.appNameWrapper {
+	@apply flex h-[60px] items-center px-6;
+}
+
+.appNameLink {
+	@apply flex items-center gap-2 font-semibold;
+}
+
+.nav {
 	@apply grid items-start px-4 text-sm font-medium;
 }
 

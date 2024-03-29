@@ -8,9 +8,9 @@ export default function UserCreatePage() {
 	const { id } = useParams();
 
 	return (
-		<main className='flex min-h-screen w-full flex-col items-center justify-center space-x-1 p-24'>
+		<div className='flex h-full w-full flex-col items-center justify-center p-24'>
 			<Heading text={'Select request type'} />
-			<div className='flex w-1/3 flex-row items-center justify-between'>
+			<div className='flex flex-row items-center justify-center gap-6'>
 				<Button
 					text={'Order'}
 					onClick={() => router.push(`/${id}/create/order`)}
@@ -20,6 +20,6 @@ export default function UserCreatePage() {
 					onClick={() => router.push(`/${id}/create/deliver`)}
 				/>
 			</div>
-		</main>
+		</div>
 	);
 }

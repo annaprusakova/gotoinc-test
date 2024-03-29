@@ -5,10 +5,10 @@ import Image from 'next/image';
 
 export default function NavBar() {
 	return (
-		<nav aria-label='Sidebar' className={styles.aside}>
-			<div className={styles.itemsContainer}>
-				<div className='flex h-[60px] items-center px-6'>
-					<a className='flex items-center gap-2 font-semibold' href='/'>
+		<div className={styles.navBarWrapper}>
+			<div className={styles.navbar}>
+				<div className={styles.appNameWrapper}>
+					<a className={styles.appNameLink} href='/'>
 						<Image
 							src='/delivery.svg'
 							alt='Delivery Logo'
@@ -18,12 +18,18 @@ export default function NavBar() {
 						<span>DELIVERY Inc</span>
 					</a>
 				</div>
-				<ul className={styles.ul}>
-					{routes.map((route, index) => (
-						<NavBarItem key={index} link={route.route} itemName={route.name} />
-					))}
-				</ul>
+				<div className='flex-1'>
+					<nav className={styles.nav}>
+						{routes.map((route, index) => (
+							<NavBarItem
+								key={index}
+								link={route.route}
+								itemName={route.name}
+							/>
+						))}
+					</nav>
+				</div>
 			</div>
-		</nav>
+		</div>
 	);
 }

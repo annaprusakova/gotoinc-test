@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.scss';
 import NavBar from '@/components/navBar/NavBar';
+import Header from '@/components/header/Header';
+import { Providers } from './StoreProvider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -18,14 +20,17 @@ export default function RootLayout({
 	return (
 		<html lang='en'>
 			<body className={inter.className}>
-				<div className='grid grid-cols-5 gap-4'>
-					<div className='col-span-1'>
+				<Providers>
+					<div className='grid min-h-screen w-full overflow-hidden lg:grid-cols-[280px_1fr]'>
 						<NavBar />
+						<div className='flex flex-col'>
+							<Header pageTitle={'Create'} />
+							<main className='flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-6'>
+								{children}
+							</main>
+						</div>
 					</div>
-					<div className='col-span-4'>
-						<main className='h-screen p-4 md:p-6'>{children}</main>
-					</div>
-				</div>
+				</Providers>
 			</body>
 		</html>
 	);

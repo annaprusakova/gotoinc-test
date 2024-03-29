@@ -2,12 +2,20 @@
 
 import CreateForm from '@/components/createForm/CreateForm';
 import { Heading } from '@/components/ui/index';
+import { useDispatch } from 'react-redux';
+import { createOrderRequest } from '../../../../lib/features/requestSlice';
+import { Request, RequestType } from '@/dto/data';
 
 export default function UserOrderPage() {
+	const dispatch = useDispatch();
+	const handleSubmit = (formData: Request) => {
+		dispatch(createOrderRequest({ ...formData }));
+	};
+
 	return (
-		<main className='flex min-h-screen w-full flex-col items-center justify-center space-x-1 p-24'>
+		<div className='flex flex-col items-center justify-center p-24'>
 			<Heading text={'Create order'} />
-			<CreateForm />
-		</main>
+			<CreateForm type={RequestType.ORDER} onSubmit={handleSubmit} />
+		</div>
 	);
 }
