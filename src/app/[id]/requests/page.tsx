@@ -2,13 +2,16 @@
 
 import { Heading } from '@/components/ui/index';
 import Table from '@/components/ui/table/Table';
-import { mockData } from '@/data/mock';
+import { UserRequests } from '@/dto/userRequests';
+import { RootState } from '@/lib/store';
 import { useParams } from 'next/navigation';
+import { useSelector } from 'react-redux';
 
 export default function UserRequestPage() {
 	const { id } = useParams();
-	const requests = mockData.find(
-		(elem) => elem.userId === parseInt(id as string)
+	const data: UserRequests[] = useSelector((state: RootState) => state.request);
+	const requests = data.find(
+		(elem) => elem.userId === (id as string)
 	)?.requests;
 	return (
 		<div>

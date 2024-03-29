@@ -1,4 +1,4 @@
-import { ParcelType } from '@/dto/data';
+import { ParcelType } from '@/dto/userRequests';
 import styles from './select.module.scss';
 
 type SelectProps = {

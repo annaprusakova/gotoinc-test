@@ -1,5 +1,5 @@
 export type UserRequests = {
-	userId: number;
+	userId: string;
 	requests: Request[];
 };
 

@@ -17,10 +17,10 @@ const options = {
 		todayBtn: '',
 		clearBtn: '',
 		icons: 'dark:bg-gray-50 dark:text-gray-900',
-		text: 'text-gray-900  dark:text-gray-900',
-		disabledText: '',
+		text: 'text-gray-900 dark:text-gray-900',
+		disabledText: 'text-gray-900 dark:text-gray-900',
 		input: 'bg-gray-50 text-gray-900 dark:bg-gray-50 dark:text-gray-900',
-		inputIcon: 'dark:bg-gray-50',
+		inputIcon: 'dark:bg-gray-50 dark:text-gray-900',
 		selected: 'dark:red',
 	},
 	icons: {

@@ -1,6 +1,6 @@
 import { columnNames } from '@/data/columnsName';
 import Column from './Column';
-import { Request } from '@/dto/data';
+import { Request } from '@/dto/userRequests';
 import Row from './Row';
 import styles from './table.module.scss';
 

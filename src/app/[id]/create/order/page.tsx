@@ -3,13 +3,15 @@
 import CreateForm from '@/components/createForm/CreateForm';
 import { Heading } from '@/components/ui/index';
 import { useDispatch } from 'react-redux';
-import { createOrderRequest } from '../../../../lib/features/requestSlice';
-import { Request, RequestType } from '@/dto/data';
+import { createRequest } from '../../../../lib/features/requestSlice';
+import { Request, RequestType } from '@/dto/userRequests';
+import { useParams } from 'next/navigation';
 
 export default function UserOrderPage() {
+	const { id } = useParams();
 	const dispatch = useDispatch();
 	const handleSubmit = (formData: Request) => {
-		dispatch(createOrderRequest({ ...formData }));
+		dispatch(createRequest({ request: formData, userId: id as string }));
 	};
 
 	return (

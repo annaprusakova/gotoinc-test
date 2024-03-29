@@ -1,6 +1,7 @@
-import { Request } from '@/dto/data';
+import { Request } from '@/dto/userRequests';
 import Image from 'next/image';
 import styles from './table.module.scss';
+import moment from 'moment';
 
 type RowProps = {
 	rowData: Request;
@@ -19,9 +20,13 @@ export default function Row({ rowData }: RowProps) {
 			<td className={styles.td}>{cityFrom}</td>
 			<td className={styles.td}>{cityTo}</td>
 			<td className={styles.td}>{type}</td>
-			<td className={styles.td}>{dateOfDispatch}</td>
+			<td className={styles.td}>
+				{moment.unix(dateOfDispatch).format('MM/DD/YYYY')}
+			</td>
 			<td className={styles.td}>{description}</td>
-			<td className={styles.td}>{createdAt}</td>
+			<td className={styles.td}>
+				{moment.unix(createdAt).format('MM/DD/YYYY')}
+			</td>
 			<td className={styles.td}>
 				<button className={styles.actionButton}>
 					<Image src='/action.svg' alt='Action' width={20} height={20} />

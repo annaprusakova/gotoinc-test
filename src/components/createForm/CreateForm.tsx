@@ -1,6 +1,6 @@
 'use client';
 
-import { ParcelType, Request, RequestType } from '@/dto/data';
+import { ParcelType, Request, RequestType } from '@/dto/userRequests';
 import { Button, DatePicker, Input, Select, TextArea } from '../ui/index';
 import { useId, useState } from 'react';
 import moment from 'moment';
