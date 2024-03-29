@@ -5,9 +5,9 @@ type SelectProps = {
 	options: string[];
 };
 
-export default function Select({ label, options }: SelectProps) {
+export function Select({ label, options }: SelectProps) {
 	return (
-		<form className='max-w-sm'>
+		<div className='mb-6 max-w-sm'>
 			<label className={styles.label}>{label}</label>
 			<select id='type' className={styles.select}>
 				{options.map((elem, index) => (
@@ -16,6 +16,6 @@ export default function Select({ label, options }: SelectProps) {
 					</option>
 				))}
 			</select>
-		</form>
+		</div>
 	);
 }

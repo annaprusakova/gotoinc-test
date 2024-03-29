@@ -1,7 +1,6 @@
 'use client';
 
-import Button from '@/components/ui/button/Button';
-import Heading from '@/components/ui/heading/Heading';
+import { Button, Heading } from '@/components/ui/index';
 import { useParams, useRouter } from 'next/navigation';
 
 export default function UserCreatePage() {

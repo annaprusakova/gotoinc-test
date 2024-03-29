@@ -5,7 +5,7 @@ type ButtonProps = {
 	onClick?: () => void;
 };
 
-export default function Button({ text, onClick }: ButtonProps) {
+export function Button({ text, onClick }: ButtonProps) {
 	return (
 		<button className={styles.button} onClick={onClick}>
 			{text}

@@ -7,7 +7,7 @@ type InputProps = {
 	onChange?: () => void;
 	error?: string;
 };
-export default function Input({
+export function Input({
 	label,
 	value,
 	placeholder,
