@@ -1,28 +1,23 @@
-'use client';
-
 import { ParcelType, Request, RequestType } from '@/dto/userRequests';
 import { Button, DatePicker, Input, Select, TextArea } from '../ui/index';
-import { useState } from 'react';
 import moment from 'moment';
-import { v4 as uuidv4 } from 'uuid';
 
-type CreateFromProps = {
+type FormProps = {
+	formData: Request;
+	setFormData: (data: Request) => void;
 	type: RequestType;
 	onSubmit: (data: Request) => void;
+	buttonText: string;
 };
 
-export default function CreateForm({ type, onSubmit }: CreateFromProps) {
+export default function Form({
+	formData,
+	setFormData,
+	type,
+	onSubmit,
+	buttonText,
+}: FormProps) {
 	const typeOptions = Object.values(ParcelType);
-	const [formData, setFormData] = useState<Request>({
-		id: uuidv4(),
-		type: type,
-		cityFrom: '',
-		cityTo: '',
-		parcelType: ParcelType.GADGETS,
-		dateDispatch: moment(new Date()).unix(),
-		description: '',
-		createdAt: 0,
-	});
 
 	const validate = () => {
 		if (formData.cityFrom === '' || formData.cityTo === '') {
@@ -39,12 +34,13 @@ export default function CreateForm({ type, onSubmit }: CreateFromProps) {
 		}
 		return true;
 	};
+
 	const handleSubmit = (e?: React.FormEvent<HTMLButtonElement>) => {
 		e?.preventDefault();
 		const isValid = validate();
 		if (isValid) {
 			onSubmit({ ...formData, createdAt: moment().unix() });
-			alert('You are successfully created order!');
+			alert(`You are successfully ${buttonText}d  order!`);
 			setFormData({
 				...formData,
 				cityFrom: '',
@@ -89,7 +85,10 @@ export default function CreateForm({ type, onSubmit }: CreateFromProps) {
 					placeholder='Parcel description'
 				/>
 			)}
-			<Button text={'Create'} onClick={(e) => handleSubmit(e)} />
+			<Button
+				text={buttonText.toUpperCase()}
+				onClick={(e) => handleSubmit(e)}
+			/>
 		</form>
 	);
 }

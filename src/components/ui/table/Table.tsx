@@ -25,7 +25,11 @@ export default function Table({
 			</thead>
 			<tbody>
 				{requests.map((row, index) => (
-					<Row key={index} rowData={row} />
+					<Row
+						key={index}
+						rowData={row}
+						isAllUsersRequests={isAllUsersRequests}
+					/>
 				))}
 			</tbody>
 		</table>

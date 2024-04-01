@@ -1,6 +1,6 @@
 'use client';
 
-import CreateForm from '@/components/createForm/CreateForm';
+import CreateForm from '@/components/form/CreateForm';
 import { Request, RequestType } from '@/dto/userRequests';
 import { useDispatch } from 'react-redux';
 import { createRequest } from '../../../../lib/features/requestSlice';
