@@ -8,14 +8,14 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 export default function UserRequestPage() {
-	const { id } = useParams();
+	const { userId } = useParams();
 	const data: UserRequests[] = useSelector((state: RootState) => state.request);
 	const [requests, setRequests] = useState<Request[] | null>();
 
 	useEffect(() => {
 		if (data) {
 			setRequests(
-				data.find((elem) => elem.userId === (id as string))?.requests
+				data.find((elem) => elem.userId === (userId as string))?.requests
 			);
 		}
 	}, [data]);

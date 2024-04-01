@@ -5,9 +5,10 @@ import { useEffect } from 'react';
 
 export default function IdPage() {
 	const router = useRouter();
-	const { id } = useParams();
+	const { userId } = useParams();
+
 	useEffect(() => {
-		router.push(`/${id}/requests`);
+		router.push(`/${userId}/requests`);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 

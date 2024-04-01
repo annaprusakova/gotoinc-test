@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 
 export default function Header() {
 	const pathname = usePathname();
-	const { id } = useParams();
+	const { userId } = useParams();
 	const [routeText, setRouteText] = useState<string>('');
 
 	useEffect(() => {
@@ -16,8 +16,8 @@ export default function Header() {
 			setRouteText('Create delivery');
 		} else if (pathname.includes('/create')) {
 			setRouteText('Create');
-		} else if (pathname.includes(`/${id}/requests`)) {
-			setRouteText(`The list of ${id} user's requests`);
+		} else if (pathname.includes(`/${userId}/requests`)) {
+			setRouteText(`The list of ${userId} user's requests`);
 		} else if (pathname.includes('/request')) {
 			setRouteText("The list of all users' requests");
 		}

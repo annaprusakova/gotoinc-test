@@ -9,6 +9,6 @@ export const routes = [
 	},
 	{
 		name: 'All requests',
-		route: '/request',
+		route: '/requests',
 	},
 ];

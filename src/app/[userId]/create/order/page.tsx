@@ -7,10 +7,10 @@ import { Request, RequestType } from '@/dto/userRequests';
 import { useParams } from 'next/navigation';
 
 export default function UserOrderPage() {
-	const { id } = useParams();
+	const { userId } = useParams();
 	const dispatch = useDispatch();
 	const handleSubmit = (formData: Request) => {
-		dispatch(createRequest({ request: formData, userId: id as string }));
+		dispatch(createRequest({ request: formData, userId: userId as string }));
 	};
 
 	return (

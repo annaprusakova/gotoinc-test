@@ -7,10 +7,10 @@ import { createRequest } from '../../../../lib/features/requestSlice';
 import { useParams } from 'next/navigation';
 
 export default function UserDeliverPage() {
-	const { id } = useParams();
+	const { userId } = useParams();
 	const dispatch = useDispatch();
 	const handleSubmit = (formData: Request) => {
-		dispatch(createRequest({ request: formData, userId: id as string }));
+		dispatch(createRequest({ request: formData, userId: userId as string }));
 	};
 	return (
 		<div className='flex flex-col items-center justify-center  p-24'>

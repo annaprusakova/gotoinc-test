@@ -14,7 +14,7 @@ type RowProps = {
 	isAllUsersRequests: boolean;
 };
 export default function Row({ rowData, isAllUsersRequests }: RowProps) {
-	const { id } = useParams();
+	const { userId } = useParams();
 
 	const [isEdit, setIsEdit] = useState<boolean>(false);
 	const [isDelete, setIsDelete] = useState<boolean>(false);
@@ -32,7 +32,7 @@ export default function Row({ rowData, isAllUsersRequests }: RowProps) {
 		dispatch(
 			editRequest({
 				newData,
-				userId: id as string,
+				userId: userId as string,
 				requestId: rowData.id,
 			})
 		);
@@ -40,7 +40,9 @@ export default function Row({ rowData, isAllUsersRequests }: RowProps) {
 	};
 
 	const handleDeleteData = () => {
-		dispatch(deleteRequest({ userId: id as string, requestId: rowData.id }));
+		dispatch(
+			deleteRequest({ userId: userId as string, requestId: rowData.id })
+		);
 		setIsDelete(false);
 	};
 	return (
