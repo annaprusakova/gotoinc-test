@@ -17,9 +17,9 @@ export default function Header() {
 		} else if (pathname.includes('/create')) {
 			setRouteText('Create');
 		} else if (pathname.includes(`/${id}/requests`)) {
-			setRouteText(`The list of ${id} user requests`);
+			setRouteText(`The list of ${id} user's requests`);
 		} else if (pathname.includes('/request')) {
-			setRouteText('The list of all users requests');
+			setRouteText("The list of all users' requests");
 		}
 	}, [pathname]);
 

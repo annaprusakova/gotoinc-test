@@ -24,10 +24,6 @@ export default function Form({
 			alert('Please fill all fields');
 			return false;
 		}
-		if (type === RequestType.ORDER && formData.description === '') {
-			alert('Please fill all fields');
-			return false;
-		}
 		if (formData.dateDispatch < moment(new Date()).unix()) {
 			alert('Wrong date');
 			return false;
@@ -40,13 +36,13 @@ export default function Form({
 		const isValid = validate();
 		if (isValid) {
 			onSubmit({ ...formData, createdAt: moment().unix() });
-			alert(`You are successfully ${buttonText}d  order!`);
+			buttonText === 'create' && alert(`You are successfully created order!`);
 			setFormData({
 				...formData,
 				cityFrom: '',
 				cityTo: '',
 				parcelType: ParcelType.GADGETS,
-				dateDispatch: 0,
+				dateDispatch: moment(new Date()).unix(),
 				description: '',
 			});
 		}

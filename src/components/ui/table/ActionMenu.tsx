@@ -11,12 +11,10 @@ export default function ActionMenu({
 	setIsDelete,
 }: ActionMenuProps) {
 	return (
-		<Menu as='div' className='relative inline-block text-left'>
-			<div>
-				<Menu.Button className={styles.menuButton}>
-					<Image src='/action.svg' alt='Action' width={20} height={20} />
-				</Menu.Button>
-			</div>
+		<Menu as='div' className='inline-block text-left'>
+			<Menu.Button className={styles.menuButton}>
+				<Image src='/action.svg' alt='action' width={20} height={20} />
+			</Menu.Button>
 			<Menu.Items className={styles.menuItem}>
 				<div className='px-1 py-1'>
 					<Menu.Item>

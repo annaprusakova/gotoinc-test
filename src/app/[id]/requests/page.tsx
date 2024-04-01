@@ -13,8 +13,12 @@ export default function UserRequestPage() {
 	const [requests, setRequests] = useState<Request[] | null>();
 
 	useEffect(() => {
-		setRequests(data.find((elem) => elem.userId === (id as string))?.requests);
-	}, []);
+		if (data) {
+			setRequests(
+				data.find((elem) => elem.userId === (id as string))?.requests
+			);
+		}
+	}, [data]);
 
 	return (
 		<div className='rounded-lg border p-2 shadow-sm'>
