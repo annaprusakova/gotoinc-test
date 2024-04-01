@@ -1,19 +1,18 @@
 'use client';
-
-import { Button } from '@/components/ui/index';
-import { useRouter } from 'next/navigation';
+import { Heading } from '@/components/ui';
+import Image from 'next/image';
 
 export default function Home() {
-	const router = useRouter();
-	const id = 1;
 	return (
 		<div className='flex h-full items-center justify-center gap-6'>
-			<Button text={'Create'} onClick={() => router.push(`/${id}/create`)} />
-			<Button
-				text={'User Requests'}
-				onClick={() => router.push(`/${id}/requests`)}
+			<Image
+				src='/delivery.svg'
+				alt='Delivery Logo'
+				width={60}
+				height={60}
+				className='mb-4'
 			/>
-			<Button text={'All requests'} onClick={() => router.push('/request')} />
+			<Heading text={'DELIVERY Inc'} />
 		</div>
 	);
 }

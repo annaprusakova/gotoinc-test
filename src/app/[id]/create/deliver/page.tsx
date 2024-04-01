@@ -1,7 +1,6 @@
 'use client';
 
 import CreateForm from '@/components/createForm/CreateForm';
-import { Heading } from '@/components/ui/index';
 import { Request, RequestType } from '@/dto/userRequests';
 import { useDispatch } from 'react-redux';
 import { createRequest } from '../../../../lib/features/requestSlice';
@@ -15,7 +14,6 @@ export default function UserDeliverPage() {
 	};
 	return (
 		<div className='flex flex-col items-center justify-center  p-24'>
-			<Heading text={'Create deliver'} />
 			<CreateForm type={RequestType.DELIVERY} onSubmit={handleSubmit} />
 		</div>
 	);

@@ -21,8 +21,8 @@ export type Request = {
 	type: RequestType;
 	cityFrom: string;
 	cityTo: string;
-	parcelType: ParcelType;
+	parcelType?: ParcelType;
 	dateDispatch: number;
-	description: string;
+	description?: string;
 	createdAt: number;
 };

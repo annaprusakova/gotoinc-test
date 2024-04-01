@@ -16,7 +16,6 @@ export default function UserOrderPage() {
 
 	return (
 		<div className='flex flex-col items-center justify-center p-24'>
-			<Heading text={'Create order'} />
 			<CreateForm type={RequestType.ORDER} onSubmit={handleSubmit} />
 		</div>
 	);

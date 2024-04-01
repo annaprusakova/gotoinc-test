@@ -1,24 +1,27 @@
 'use client';
 
-import { Heading } from '@/components/ui';
 import Table from '@/components/ui/table/Table';
+import { Request } from '@/dto/userRequests';
 import { RootState } from '@/lib/store';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 export default function AllRequests() {
 	const data = useSelector((state: RootState) => state.request);
-	const allRequests = data.map((elem) => elem.requests);
+	const [requests, setRequests] = useState<Request[] | null>();
+
+	useEffect(() => {
+		setRequests(data.map((elem) => elem.requests).flat());
+	}, []);
+
 	return (
-		<div>
-			<Heading text={`The list of all users requests`} />
-			<div className='rounded-lg border p-2 shadow-sm'>
-				<div className='relative w-full overflow-auto'>
-					{allRequests ? (
-						<Table requests={allRequests.flat()} />
-					) : (
-						<span>No data yet</span>
-					)}
-				</div>
+		<div className='rounded-lg border p-2 shadow-sm'>
+			<div className='relative w-full overflow-auto'>
+				{requests ? (
+					<Table requests={requests} isAllUsersRequests={true} />
+				) : (
+					<span>No data yet</span>
+				)}
 			</div>
 		</div>
 	);

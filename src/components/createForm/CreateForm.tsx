@@ -2,8 +2,9 @@
 
 import { ParcelType, Request, RequestType } from '@/dto/userRequests';
 import { Button, DatePicker, Input, Select, TextArea } from '../ui/index';
-import { useId, useState } from 'react';
+import { useState } from 'react';
 import moment from 'moment';
+import { v4 as uuidv4 } from 'uuid';
 
 type CreateFromProps = {
 	type: RequestType;
@@ -13,7 +14,7 @@ type CreateFromProps = {
 export default function CreateForm({ type, onSubmit }: CreateFromProps) {
 	const typeOptions = Object.values(ParcelType);
 	const [formData, setFormData] = useState<Request>({
-		id: useId(),
+		id: uuidv4(),
 		type: type,
 		cityFrom: '',
 		cityTo: '',
@@ -24,11 +25,11 @@ export default function CreateForm({ type, onSubmit }: CreateFromProps) {
 	});
 
 	const validate = () => {
-		if (
-			formData.cityFrom === '' ||
-			formData.cityTo === '' ||
-			formData.description === ''
-		) {
+		if (formData.cityFrom === '' || formData.cityTo === '') {
+			alert('Please fill all fields');
+			return false;
+		}
+		if (type === RequestType.ORDER && formData.description === '') {
 			alert('Please fill all fields');
 			return false;
 		}
@@ -68,22 +69,26 @@ export default function CreateForm({ type, onSubmit }: CreateFromProps) {
 				onChange={(value) => setFormData({ ...formData, cityTo: value })}
 				placeholder='City to'
 			/>
-			<Select
-				label={'Type of parcel'}
-				options={typeOptions}
-				value={formData.parcelType}
-				onChange={(value) => setFormData({ ...formData, parcelType: value })}
-			/>
+			{type === RequestType.ORDER && formData.parcelType && (
+				<Select
+					label={'Type of parcel'}
+					options={typeOptions}
+					value={formData.parcelType}
+					onChange={(value) => setFormData({ ...formData, parcelType: value })}
+				/>
+			)}
 			<DatePicker
 				label={'Date'}
 				onChange={(value) => setFormData({ ...formData, dateDispatch: value })}
 			/>
-			<TextArea
-				label='Description'
-				value={formData.description}
-				onChange={(value) => setFormData({ ...formData, description: value })}
-				placeholder='Parcel description'
-			/>
+			{type === RequestType.ORDER && formData.description !== undefined && (
+				<TextArea
+					label='Description'
+					value={formData.description}
+					onChange={(value) => setFormData({ ...formData, description: value })}
+					placeholder='Parcel description'
+				/>
+			)}
 			<Button text={'Create'} onClick={(e) => handleSubmit(e)} />
 		</form>
 	);
