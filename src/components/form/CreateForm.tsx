@@ -1,6 +1,6 @@
 'use client';
 
-import { ParcelType, Request, RequestType } from '@/dto/userRequests';
+import { Request, RequestType } from '@/dto/userRequests';
 import { useState } from 'react';
 import moment from 'moment';
 import { v4 as uuidv4 } from 'uuid';
@@ -17,7 +17,7 @@ export default function CreateForm({ type, onSubmit }: CreateFromProps) {
 		type: type,
 		cityFrom: '',
 		cityTo: '',
-		parcelType: ParcelType.GADGETS,
+		parcelType: undefined,
 		dateDispatch: moment(new Date()).unix(),
 		description: '',
 		createdAt: 0,

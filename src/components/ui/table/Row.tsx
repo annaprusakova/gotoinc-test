@@ -1,4 +1,4 @@
-import { Request } from '@/dto/userRequests';
+import { MatchedRequest, Request } from '@/dto/userRequests';
 import styles from './table.module.scss';
 import moment from 'moment';
 import ActionMenu from './ActionMenu';
@@ -8,21 +8,32 @@ import EditForm from '@/components/form/EditForm';
 import { deleteRequest, editRequest } from '@/lib/features/requestSlice';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'next/navigation';
+import cn from 'classnames';
+import MatchedRow from './MatchedRow';
 
 type RowProps = {
 	rowData: Request;
 	isAllUsersRequests: boolean;
+	setSelectedRequest?: (request: Request) => void;
+	matchedRequests?: MatchedRequest | null;
 };
-export default function Row({ rowData, isAllUsersRequests }: RowProps) {
+export default function Row({
+	rowData,
+	isAllUsersRequests,
+	setSelectedRequest,
+	matchedRequests,
+}: RowProps) {
 	const { userId } = useParams();
 
 	const [isEdit, setIsEdit] = useState<boolean>(false);
 	const [isDelete, setIsDelete] = useState<boolean>(false);
 	const dispatch = useDispatch();
 	const {
+		id,
+		type,
 		cityFrom,
 		cityTo,
-		parcelType: type,
+		parcelType,
 		dateDispatch: dateOfDispatch,
 		description,
 		createdAt,
@@ -45,12 +56,29 @@ export default function Row({ rowData, isAllUsersRequests }: RowProps) {
 		);
 		setIsDelete(false);
 	};
+
+	const handleSelectRow = () => {
+		if (setSelectedRequest) {
+			setSelectedRequest(rowData);
+		}
+	};
 	return (
 		<>
-			<tr className={styles.tr}>
+			<tr
+				className={cn(styles.tr, { [styles.hover]: !isAllUsersRequests })}
+				onClick={handleSelectRow}
+			>
+				<td className={styles.td}>
+					{type.slice(0, 1) + type.slice(1, type.length).toLowerCase()}
+				</td>
 				<td className={styles.td}>{cityFrom}</td>
 				<td className={styles.td}>{cityTo}</td>
-				<td className={styles.td}>{type}</td>
+				<td className={styles.td}>
+					{parcelType
+						? parcelType?.slice(0, 1) +
+							parcelType?.slice(1, parcelType?.length).toLowerCase()
+						: ''}
+				</td>
 				<td className={styles.td}>
 					{moment.unix(dateOfDispatch).format('MM/DD/YYYY')}
 				</td>
@@ -64,6 +92,12 @@ export default function Row({ rowData, isAllUsersRequests }: RowProps) {
 					</td>
 				)}
 			</tr>
+			{matchedRequests &&
+				matchedRequests.records &&
+				matchedRequests.recordId === id &&
+				matchedRequests.records.map((request, key) => (
+					<MatchedRow key={key} request={request} />
+				))}
 			<Modal isOpen={isEdit} closeModal={() => setIsEdit(false)}>
 				<EditForm
 					type={rowData.type}

@@ -28,7 +28,6 @@ const options = {
 		next: () => <span>{'>'}</span>,
 	},
 	datepickerClassNames: 'top-12',
-	defaultDate: new Date(),
 	language: 'en',
 	disabledDates: [],
 	weekDays: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
@@ -39,10 +38,11 @@ const options = {
 
 type DatePickerProps = {
 	label: string;
+	value: number;
 	onChange: (value: number) => void;
 };
 
-export function DatePicker({ label, onChange }: DatePickerProps) {
+export function DatePicker({ label, onChange, value }: DatePickerProps) {
 	const [show, setShow] = useState<boolean>(false);
 	const handleChange = (selectedDate: Date) => {
 		onChange(moment(selectedDate).unix());
@@ -57,6 +57,7 @@ export function DatePicker({ label, onChange }: DatePickerProps) {
 				options={options}
 				onChange={handleChange}
 				show={show}
+				value={moment.unix(value).toDate()}
 				setShow={handleClose}
 			/>
 		</div>

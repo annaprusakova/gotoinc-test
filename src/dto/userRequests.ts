@@ -26,3 +26,8 @@ export type Request = {
 	description?: string;
 	createdAt: number;
 };
+
+export type MatchedRequest = {
+	recordId: string;
+	records: Request[] | undefined;
+};

@@ -24,7 +24,7 @@ export default function Form({
 			alert('Please fill all fields');
 			return false;
 		}
-		if (formData.dateDispatch < moment(new Date()).unix()) {
+		if (formData.dateDispatch < moment(new Date().toDateString()).unix()) {
 			alert('Wrong date');
 			return false;
 		}
@@ -61,16 +61,17 @@ export default function Form({
 				onChange={(value) => setFormData({ ...formData, cityTo: value })}
 				placeholder='City to'
 			/>
-			{type === RequestType.ORDER && formData.parcelType && (
+			{type === RequestType.ORDER && (
 				<Select
 					label={'Type of parcel'}
 					options={typeOptions}
-					value={formData.parcelType}
+					value={formData.parcelType ?? ParcelType.GADGETS}
 					onChange={(value) => setFormData({ ...formData, parcelType: value })}
 				/>
 			)}
 			<DatePicker
 				label={'Date'}
+				value={formData.dateDispatch}
 				onChange={(value) => setFormData({ ...formData, dateDispatch: value })}
 			/>
 			{type === RequestType.ORDER && formData.description !== undefined && (
