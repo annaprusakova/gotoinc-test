@@ -12,7 +12,7 @@ type TableProps = {
 	setSelectedRequest?: (request: Request) => void;
 	matchedRequests?: MatchedRequest | null;
 };
-export default function Table({
+export function Table({
 	requests,
 	isAllUsersRequests = false,
 	setSelectedRequest,

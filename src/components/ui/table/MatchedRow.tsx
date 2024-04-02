@@ -16,7 +16,7 @@ export default function MatchedRow({ request }: MatchedProps) {
 		createdAt,
 	} = request;
 	return (
-		<tr className={'bg-slate-400'}>
+		<tr className={'bg-accent'}>
 			<td className={styles.td}>
 				{type.slice(0, 1) + type.slice(1, type.length).toLowerCase()}
 			</td>

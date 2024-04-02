@@ -44,12 +44,15 @@ type DatePickerProps = {
 
 export function DatePicker({ label, onChange, value }: DatePickerProps) {
 	const [show, setShow] = useState<boolean>(false);
+
 	const handleChange = (selectedDate: Date) => {
 		onChange(moment(selectedDate).unix());
 	};
+
 	const handleClose = (state: boolean) => {
 		setShow(state);
 	};
+
 	return (
 		<div className={'mb-6'}>
 			<label className={'mb-2 block text-sm font-medium'}>{label}</label>

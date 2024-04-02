@@ -1,6 +1,6 @@
 'use client';
 
-import Table from '@/components/ui/table/Table';
+import { Table } from '@/components/ui/index';
 import { MatchedRequest, Request, UserRequests } from '@/dto/userRequests';
 import { RootState } from '@/lib/store';
 import { useParams } from 'next/navigation';
@@ -52,10 +52,12 @@ export default function UserRequestPage() {
 
 	return (
 		<>
-			<span>
-				You could select a row to see if there are matched requests from other
-				users.
-			</span>
+			{requests?.length && (
+				<span>
+					You could select a row to see if there are matched requests from other
+					users.
+				</span>
+			)}
 			<div className='rounded-lg border p-2 shadow-sm'>
 				<div className='relative w-full'>
 					{requests ? (

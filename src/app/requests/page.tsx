@@ -1,7 +1,6 @@
 'use client';
 
-import { Button } from '@/components/ui';
-import Table from '@/components/ui/table/Table';
+import { Button, Table } from '@/components/ui';
 import { Request } from '@/dto/userRequests';
 import { RootState } from '@/lib/store';
 import { useEffect, useState } from 'react';
@@ -17,6 +16,7 @@ export default function AllRequests() {
 		allRequests.sort((a, b) => b.createdAt - a.createdAt);
 		setRequests(allRequests);
 	};
+
 	const handleSort = () => {
 		setIsSortASC(!isSortASC);
 		const sortData = requests?.sort((a, b) =>

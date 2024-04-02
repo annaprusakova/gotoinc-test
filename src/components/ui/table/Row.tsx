@@ -24,7 +24,6 @@ export default function Row({
 	matchedRequests,
 }: RowProps) {
 	const { userId } = useParams();
-
 	const [isEdit, setIsEdit] = useState<boolean>(false);
 	const [isDelete, setIsDelete] = useState<boolean>(false);
 	const dispatch = useDispatch();
@@ -38,6 +37,12 @@ export default function Row({
 		description,
 		createdAt,
 	} = rowData;
+
+	const handleSelectRow = () => {
+		if (setSelectedRequest) {
+			setSelectedRequest(rowData);
+		}
+	};
 
 	const handleEditData = (newData: Request) => {
 		dispatch(
@@ -57,11 +62,6 @@ export default function Row({
 		setIsDelete(false);
 	};
 
-	const handleSelectRow = () => {
-		if (setSelectedRequest) {
-			setSelectedRequest(rowData);
-		}
-	};
 	return (
 		<>
 			<tr
