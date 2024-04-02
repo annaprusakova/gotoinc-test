@@ -1,9 +1,9 @@
 'use client';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import counterSlice from './features/requestSlice';
+import requestSlice from './features/requestSlice';
 
 const rootReducer = combineReducers({
-	request: counterSlice,
+	request: requestSlice,
 });
 
 export const store = configureStore({
